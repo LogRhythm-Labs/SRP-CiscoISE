@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<remv1:Remediation-Plugin xmlns:remv1="RemediationVersion1.xsd" Name="Cisco ISE Quarantine Host" Guid="2f6f81b1-09dd-4fe3-a0d5-58797a0a58ba" Version="1">
+  <remv1:Action Name="Quarantine By MAC Address / Synchronous" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file ISE_Quarantine.ps1 -NoProfile 'QuarantineByMAC_S'" Order="1" />
+    <remv1:StringParameter Name="ISE_IP_Address" Switch="" Order="2">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="ISE IP Address" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Host MAC To Quarantine" Switch="" Order="3">
+      <remv1:DefaultInput>
+        <remv1:DHostName />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="API Account Name" Switch="" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="API Account Password" Switch="" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+  <remv1:Action Name="Quarantine By IP Address / Synchronous" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file ISE_Quarantine.ps1 -NoProfile 'QuarantineByIP_S'" Order="1" />
+    <remv1:StringParameter Name="ISE_IP_Address" Switch="" Order="2">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="ISE IP Address" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Host IP To Quarantine" Switch="" Order="3">
+      <remv1:DefaultInput>
+        <remv1:DIP />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="API Account Name" Switch="" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="API Account Password" Switch="" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+  <remv1:Action Name="Quarantine By Session / Synchronous" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file ISE_Quarantine.ps1 -NoProfile 'QuarantineByID_S'" Order="1" />
+    <remv1:StringParameter Name="ISE_IP_Address" Switch="" Order="2">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="ISE IP Address" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Session ID To Quarantine" Switch="" Order="3">
+      <remv1:DefaultInput>
+        <remv1:Session />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="API Account Name" Switch="" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="API Account Password" Switch="" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+  <remv1:Action Name="Quarantine By MAC Address / Asynchronous" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file ISE_Quarantine.ps1 -NoProfile 'QuarantineByMAC'" Order="1" />
+    <remv1:StringParameter Name="ISE_IP_Address" Switch="" Order="2">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="ISE IP Address" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Host MAC To Quarantine" Switch="" Order="3">
+      <remv1:DefaultInput>
+        <remv1:DHostName />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="API Account Name" Switch="" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="API Account Password" Switch="" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+  <remv1:Action Name="Quarantine By IP Address / Asynchronous" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file ISE_Quarantine.ps1 -NoProfile 'QuarantineByIP'" Order="1" />
+    <remv1:StringParameter Name="ISE_IP_Address" Switch="" Order="2">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="ISE IP Address" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Host IP To Quarantine" Switch="" Order="3">
+      <remv1:DefaultInput>
+        <remv1:DIP />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="API Account Name" Switch="" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="API Account Password" Switch="" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+  <remv1:Action Name="Quarantine By Session / Asynchronous" Command="powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-file ISE_Quarantine.ps1 -NoProfile 'QuarantineByID'" Order="1" />
+    <remv1:StringParameter Name="ISE_IP_Address" Switch="" Order="2">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="ISE IP Address" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Session ID To Quarantine" Switch="" Order="3">
+      <remv1:DefaultInput>
+        <remv1:Session />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="API Account Name" Switch="" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="API Account Password" Switch="" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+</remv1:Remediation-Plugin>
