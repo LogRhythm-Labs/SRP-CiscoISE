@@ -6,6 +6,11 @@
 # Test that the API is working by using this url in a browser
 # .\ISE_Quarantine.ps1 -NoProfile "<ISE IP Address>" "QuarantineByMAC_S" "<Test MAC Address with no colons>" 
 
+# Copyright 2016 LogRhythm Inc.   
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at;
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.
+
 # Set up a trap to properly exit on terminating exceptions
 trap [Exception] 
 {
@@ -15,7 +20,7 @@ trap [Exception]
 
 
 # Read in the parameters passed by the SmartResponse action
-#args[0] = the switch -NoProfile. -NoProfile Tells the PowerShell console not to load the current user’s profile. 
+#args[0] = the switch -NoProfile. -NoProfile Tells the PowerShell console not to load the current userâ€™s profile. 
 $QuarantineMethod = $args[1]  #either "QuarantineByMAC_S" or "QuarantineByIP_S" or "QuarantineByID_S"
 $monitoring_node = $args[2]   #ipaddress or hostname of the ISE node
 $QuarantineType = $args[3]    #the physical mac address, ip address, or sessionID
