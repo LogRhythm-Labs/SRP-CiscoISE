@@ -1,10 +1,9 @@
-# Mark Vankempen
-# 15-10-13
-# Modified script to handle terminating and non-terminating exceptions. 
-# Added URL error checking to see if the ip supplied is correct
-#
-# Test that the API is working by using this url in a browser
-# .\ISE_Quarantine.ps1 -NoProfile "<ISE IP Address>" "QuarantineByMAC_S" "<Test MAC Address with no colons>" 
+#==========================================#
+# LogRhythm Threat Research                #
+# Carbon Black - SmartResponse             #
+# matt . willems @ logrhythm . com         #
+# v0.1  --  April, 2016                    #
+#==========================================#
 
 # Copyright 2016 LogRhythm Inc.   
 # Licensed under the MIT License. See LICENSE file in the project root for full license information.
@@ -204,8 +203,8 @@ else
 # SIG # Begin signature block
 # MIIdxgYJKoZIhvcNAQcCoIIdtzCCHbMCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUO7BAfL1RpOeoKlheMYOjn1py
-# 2vugghi2MIID7jCCA1egAwIBAgIQfpPr+3zGTlnqS5p31Ab8OzANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUy05bbgvNIBYNtCq7Y5POinnJ
+# 5pugghi2MIID7jCCA1egAwIBAgIQfpPr+3zGTlnqS5p31Ab8OzANBgkqhkiG9w0B
 # AQUFADCBizELMAkGA1UEBhMCWkExFTATBgNVBAgTDFdlc3Rlcm4gQ2FwZTEUMBIG
 # A1UEBxMLRHVyYmFudmlsbGUxDzANBgNVBAoTBlRoYXd0ZTEdMBsGA1UECxMUVGhh
 # d3RlIENlcnRpZmljYXRpb24xHzAdBgNVBAMTFlRoYXd0ZSBUaW1lc3RhbXBpbmcg
@@ -343,22 +342,22 @@ else
 # MDEuMCwGA1UEAxMlVmVyaVNpZ24gQ2xhc3MgMyBDb2RlIFNpZ25pbmcgMjAxMCBD
 # QQIQb86k4QlOrKAuOolBFzl1RTAJBgUrDgMCGgUAoHgwGAYKKwYBBAGCNwIBDDEK
 # MAigAoAAoQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3
-# AgELMQ4wDAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQUzmggI530WEUMpy0A
-# rUDNZXxL8LMwDQYJKoZIhvcNAQEBBQAEggEAM6+zLOtTUeir4DiT6db65/dS9lAA
-# o+0TH9ktufAToMor5CdlPmGgOxk9XlNPC5KC8dVCD2/xxBA6M+PBgiJMgfSjVQf2
-# JoD/X9CHU7n8qpxEnYbcCC5TvdiJEmrzybeR0Wzwb6XWNKeK5J/xVj6QZAnpSi8F
-# d9c1jPP7SXnqCBY1de03jIpdMZteikP6UD8uzTmQAo3b8V5GDKPNiQZv+EmcYGYz
-# X39EchYCvERaSAhFASU4M7pBHzB9T9CRK24WQ/U1YjyIG+PkIuXv0sTOyefn9veh
-# l5p6LeNI2C4Gp0coLMDHL+VOoEnF1zGi2IegCnKb6IQ0NsOqIBzb/Q5OKaGCAgsw
+# AgELMQ4wDAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQULgQF83HQV6kq1dXy
+# ptKeA08Kj/cwDQYJKoZIhvcNAQEBBQAEggEACXHnpHYA0UrPvhkFwRyJddChABk+
+# ZOURoiIRXtwpyn3Va+Qt+kus1cMire8Jw17zd9j8PB2BtNc1Hzsnbx5Lo4sVGblI
+# aDRUgTWBWqk2jxTEVkvSuF/UVY4RYeBRlrWGlsx6GCRN1qiYBDrsqLDoNdmsQtV6
+# nYUGbVak0rTGUbLvUufFDBrlIuyMTw9WNpzBmAY26ibrRGr7rUol4Dgzr4mA38kU
+# xcLIpnKZlZrkBoeM3fJZqrBs0MimnQyu/DXhKbsFe+Vhw2JK012jsXtUqbjj7IG8
+# 2uCMaLpq2lX3x9Wi66FWaxCwknJ55A4qEzE6iQuYvXgjsmgpm9zECvF356GCAgsw
 # ggIHBgkqhkiG9w0BCQYxggH4MIIB9AIBATByMF4xCzAJBgNVBAYTAlVTMR0wGwYD
 # VQQKExRTeW1hbnRlYyBDb3Jwb3JhdGlvbjEwMC4GA1UEAxMnU3ltYW50ZWMgVGlt
 # ZSBTdGFtcGluZyBTZXJ2aWNlcyBDQSAtIEcyAhAOz/Q4yP6/NW4E2GqYGxpQMAkG
 # BSsOAwIaBQCgXTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJ
-# BTEPFw0xNzAxMTIxODM3NDVaMCMGCSqGSIb3DQEJBDEWBBTblKVQfEcns7A8NeAg
-# bm7RZDZsYDANBgkqhkiG9w0BAQEFAASCAQCGR80r94LyfWJKoy3zyT9Yzx/M3JIq
-# q/GyExhCkxBfFfUA8i48F98WAsa7gGsxy+jrBhGImhxsCv9HQctgMgo0UjCTK5F7
-# Z9iIvJI3eYEv6dChbXO92F5hzijEwJz13vtzac5ipY9oCgryzi+IrRPgUnlHpFzZ
-# IyLZXmSBkxQ8Nx8Hw8GztRemGZYdIkfAUGWR2U2gPUFKW4tSarQ9seE+qsyOCFz0
-# xySZN2jnkizGSydldCfOy+IzLKtbs8pgMuGpvbp81ZskoGSP4OEsSMcdFWOEQv5K
-# FZqcY6MdN4P79hQ72bz+ur75dEju29tLlLy/WSTCAMYPeinwdDnj0/y/
+# BTEPFw0xNzAyMDMyMjA4NDNaMCMGCSqGSIb3DQEJBDEWBBRKwJFcZex3EP5/r783
+# ylA9n1bAeTANBgkqhkiG9w0BAQEFAASCAQBQMCYdPEarQTQKDk9giin4sRMnJ/FO
+# kdfrWQSzls9iwDtKu82iOu2zM8A8LjcBYqV8paYib33KXKsnzNe3ZL4vIReKTFrA
+# 4f1B49fyFhkrGE1q3Il6DOFYPjNyDTHkXzAI2uAgCEXQ87a4Ma1Hx55yIHTil3i+
+# 3NFCix0I4dD1tlqkfHQiKuypTp9sSSLidBxeyDQvY2W8pJGXcZjyc2uEFAQ05d+P
+# adEXbKVLmXeYWzT7pasnQAeiZt6TD8AWv8+1qzMb3jUoT/aF6bWxGUgFoUQ6s1vb
+# geaDLOQlh55D6J9RHSHmYJrdTJCdLBOHbdoZQVbtBgdwR7yEQza5hB+9
 # SIG # End signature block
