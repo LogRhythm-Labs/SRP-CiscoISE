@@ -1,3 +1,8 @@
+LogRhythm Threat Research
+Remote File Extraction SmartResponse
+Matt Willems | @MattWillems | matt.willems@logrhythm.com
+v0.1 -- April, 2016
+
 # SRP-CiscoISE
 SmartResponse plugin to quarantine a host via Cisco ISE
 
